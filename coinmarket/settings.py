@@ -71,6 +71,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "coinmarket.wsgi.application"
 
 
+CELERY_BROKER_URL = "redis://localhost:6379"
+
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
