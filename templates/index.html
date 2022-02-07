@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="mx-auto mt-5">
+      <h3>CryptoCurrencies</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">24hr</th>
+            <th scope="col">24hr Difference(hi-lo)</th>
+            <th scope="col">Invest</th>
+            <th scope="col">Forecast</th>
+            <th scope="col">MarketCap</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for coin in data %}
+          <tr>
+            <td class="align-middle">{{coin.market_cap_rank}}</td>
+            <td class="align-middle">
+              <div class="d-flex align-items-center">
+                <img
+                  src="{{coin.image}}"
+                  alt="{{coin.name}}"
+                  class="px-2"
+                  width="50"
+                />
+                {{coin.name }}
+                <small class="text-muted px-2"> {{coin.symbol}} </small>
+              </div>
+            </td>
+            <td class="align-middle">{{coin.current_price}}</td>
+            <td class="align-middle">{{coin.price_change_percentage_24h}}</td>
+            <td class="align-middle">{{coin.high_24h}}-{{coin.low_24h}}</td>
+            <td class="align-middle">N/A</td>
+            <td class="align-middle">N/A</td>
+            <td class="align-middle">{{coin.market_cap}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
