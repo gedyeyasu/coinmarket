@@ -11,6 +11,16 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'coinmarket.settings')
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
 
-application = get_asgi_application()
+from coin.routing import ws_urlpatterns
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coinmarket.settings")
+
+application = ProtocolTypeRouter(
+    {
+        "http": get_asgi_application(),
+        "websocket": AuthMiddlewareStack(URLRouter(ws_urlpatterns)),
+    }
+)

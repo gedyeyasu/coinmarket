@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "channels",
     "coin",
 ]
 
@@ -69,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "coinmarket.wsgi.application"
+ASGI_APPLICATION = "coinmarket.asgi.application"
 
 
 CELERY_BROKER_URL = "redis://localhost:6379"
